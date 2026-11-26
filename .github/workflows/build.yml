@@ -34,7 +34,7 @@ jobs:
 
       # EXERCICE 7 : Exécution des tests automatisés (Shift-Left)
       - name: Exécution des tests unitaires
-        run: npm test
+        run: npm test:coverage
 
       # EXERCICE 9 (Bonus) : Publication des résultats des tests unitaires
       - name: Publier les résultats des tests
@@ -52,3 +52,9 @@ jobs:
             index.js
             package.json
             junit.xml
+
+      - name: Partage du rapport de couverture
+        uses: actions/upload-artifact@v5
+        with:
+          name: coverage-report
+          path: coverage/lcov.info
